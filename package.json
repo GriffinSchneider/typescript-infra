@@ -1,0 +1,8 @@
+{
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.14.1",
+    "syncpack": "^4.5.2"
+  }
+}

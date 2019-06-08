@@ -1,0 +1,11 @@
+{
+  "language": "js",
+  "output": "./build/api-clients",
+  "specs": {
+    "ItemsApi": {
+      "spec": "../../shared/build/items-api-spec/swagger.json",
+      "className": "ItemsAPI",
+      "packageName": "items-api-client"
+    }
+  }
+}

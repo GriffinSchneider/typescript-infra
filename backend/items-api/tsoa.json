@@ -1,0 +1,15 @@
+{
+  "swagger": {
+    "outputDirectory": "../../shared/build/items-api-spec",
+    "entryFile": "./src/index.ts",
+    "basePath": ""
+  },
+  "routes": {
+    "basePath": "",
+    "entryFile": "./src/index.ts",
+    "routesDir": "./src"
+  },
+  "ignore": [
+    "**/node_modules/**"
+  ]
+}

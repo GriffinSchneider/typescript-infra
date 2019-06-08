@@ -1,0 +1,16 @@
+{
+  "name": "items-api",
+  "main": "index.js",
+  "scripts": {
+    "generate-spec": "npx tsoa swagger",
+    "watch": "nodemon -x 'npm run generate-spec'  --ignore build/spec --ext ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "tsoa": "^2.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.5.1"
+  }
+}

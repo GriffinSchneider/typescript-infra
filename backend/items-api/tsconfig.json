@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "outDir": "./build",
+    "module": "commonjs",
+    // "strict": true,
+    // "noImplicitAny": true,
+    // "strictNullChecks": true,
+    // "strictFunctionTypes": true,
+    // "strictPropertyInitialization": true,
+    // "noImplicitThis": true,
+    // "alwaysStrict": true,
+
+
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    // "noImplicitReturns": true,
+    // "noFallthroughCasesInSwitch": true,
+
+
+    // "moduleResolution": "node",
+    "baseUrl": ".", // Required by typescript-rest-swagger
+    "paths": {
+      "@/*": ["src/*"] // Required by typescript-rest-swagger
+    },
+
+    "rootDirs": ["src/"],
+    // "typeRoots": [],
+    // "types": [],
+    // "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    // "preserveSymlinks": true,
+
+
+    // "sourceRoot": "./",
+    // "mapRoot": "./",
+    // "inlineSourceMap": true,
+    // "inlineSources": true,
+
+
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  }
+}

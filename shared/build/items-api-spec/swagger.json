@@ -1,0 +1,83 @@
+{
+	"basePath": "/",
+	"consumes": [
+		"application/json"
+	],
+	"definitions": {
+		"Item": {
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"otherName": {
+					"type": "string"
+				},
+				"thirdName": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"otherName",
+				"thirdName"
+			],
+			"type": "object"
+		},
+		"Items": {
+			"properties": {
+				"items": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Item"
+					}
+				}
+			},
+			"required": [
+				"items"
+			],
+			"type": "object"
+		}
+	},
+	"info": {
+		"title": "items-api"
+	},
+	"paths": {
+		"/Items/{id}": {
+			"get": {
+				"operationId": "GetItems",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/Items"
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					},
+					{
+						"in": "query",
+						"name": "name",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		}
+	},
+	"produces": [
+		"application/json"
+	],
+	"swagger": "2.0",
+	"securityDefinitions": {}
+}
