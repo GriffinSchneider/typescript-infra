@@ -2,8 +2,10 @@
   "name": "items-api",
   "main": "index.js",
   "scripts": {
-    "generate-spec": "swaggerGen -c ./swaggerConfig.json",
-    "watch": "nodemon -x 'npm run generate-spec'  --ignore build/spec --ext ts",
+    "start": "npx tsc && node build/index.js",
+    "barrels": "npx barrelsby --directory 'src/controllers' --location top --name barrel --delete",
+    "generate-spec": "npm run barrels && swaggerGen -c ./swaggerConfig.json",
+    "watch": "nodemon -x 'npm run generate-spec && npm run start'  --ignore build/spec --ignore src/controllers/barrel.ts --ext ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -13,6 +15,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^1.9.0",
     "@typescript-eslint/parser": "^1.9.0",
+    "barrelsby": "^2.1.1",
     "eslint": "^5.16.0",
     "typescript": "^3.5.1",
     "typescript-rest-swagger": "^0.1.0"

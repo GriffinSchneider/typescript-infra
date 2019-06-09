@@ -31,7 +31,7 @@ definitions:
 info:
     title: items-api
 paths:
-    '/items/{itemId}':
+    '/items/{accountId}':
         get:
             operationId: ItemsGetItems
             produces:
@@ -46,7 +46,25 @@ paths:
                 -
                     description: ""
                     in: path
-                    name: itemId
+                    name: accountId
+                    required: true
+                    type: string
+    '/transactions/{accountId}':
+        get:
+            operationId: TransactionsGetTransactions
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/Items'
+            description: ""
+            parameters:
+                -
+                    description: ""
+                    in: path
+                    name: accountId
                     required: true
                     type: string
 swagger: '2.0'

@@ -1,26 +1,18 @@
+import * as fs from 'fs';
+import * as path from 'path';
 import express from 'express';
-import {Server, Path, GET, PathParam} from "typescript-rest";
+import { Server } from 'typescript-rest';
 
-interface Item {
-  name: string;
-  otherName: string;
-  thirdName: string;
-}
-interface Items {
-  items: Array<Item>;
-}
+import './controllers/barrel';
 
-@Path("/items")
-export class ItemsController {
-  @Path(":itemId")
-  @GET
-  async getItems( @PathParam('itemId') id: string ): Promise<Items> {
-    return { items: [{ name: `Hello ${id}`, otherName: 'griffin', thirdName: '3' }] };
-  }
-}
-
-let app: express.Application = express();
-Server.buildServices(app);
-app.listen(3000, function() {
-  console.log('Rest Server listening on port 3000!');
-});
+(async function setup() {
+  let app: express.Application = express();
+  Server.buildServices(app);
+  Server.swagger(app, {
+    endpoint: 'api-docs',
+    filePath: path.resolve(__dirname, '../../../shared/build/items-api-spec/swagger.json'),
+  })
+  app.listen(3000, function() {
+    console.log('Rest Server listening on port 3000!');
+  });
+})();

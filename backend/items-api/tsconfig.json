@@ -1,26 +1,23 @@
 {
   "extends": "../../tsconfig-common",
+  "include": [
+    "src/**/*"
+  ],
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
     "outDir": "./build",
-
-    // "moduleResolution": "node",
-    "baseUrl": ".", // Required by typescript-rest-swagger
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"] // Required by typescript-rest-swagger
+      "@/*": [
+        "src/*"
+      ]
     },
-
-    "rootDirs": ["src/"],
-    // "typeRoots": [],
-    // "types": [],
-    // "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
-    // "preserveSymlinks": true,
-
-    // "sourceRoot": "./",
-    // "mapRoot": "./",
-    // "inlineSourceMap": true,
-    // "inlineSources": true,
+    "rootDirs": [
+      "src/"
+    ],
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   }
 }
