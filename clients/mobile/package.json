@@ -2,7 +2,7 @@
   "name": "mobile",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "generate-api-clients": "npx small-swagger-codegen codegenconfig.json",
+    "generate-api-clients": "npx ts-node scripts/generate-api-clients.ts",
     "watch": "nodemon  -x 'npm run generate-api-clients' --ignore build/api-clients --ext json --watch '../../shared/build/'",
     "start": "expo start",
     "android": "expo start --android",
@@ -28,6 +28,7 @@
     "eslint": "^5.16.0",
     "eslint-plugin-react": "^7.13.0",
     "small-swagger-codegen": "^1.10.0",
+    "ts-node": "^8.2.0",
     "typescript": "^3.4.5"
   },
   "private": true
