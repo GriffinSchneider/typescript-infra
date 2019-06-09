@@ -1,6 +1,9 @@
 {
   "name": "root",
   "private": true,
+  "scripts": {
+    "bootstrap": "npx ts-node scripts/bootstrap.ts"
+  },
   "devDependencies": {
     "@types/node": "^12.0.7",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
