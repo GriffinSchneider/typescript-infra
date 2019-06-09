@@ -1,50 +1,52 @@
 {
-	"basePath": "/",
-	"consumes": [
-		"application/json"
-	],
 	"definitions": {
 		"Item": {
+			"description": "",
 			"properties": {
 				"name": {
-					"type": "string"
+					"type": "string",
+					"description": ""
 				},
 				"otherName": {
-					"type": "string"
+					"type": "string",
+					"description": ""
 				},
 				"thirdName": {
-					"type": "string"
+					"type": "string",
+					"description": ""
 				}
 			},
+			"type": "object",
 			"required": [
 				"name",
 				"otherName",
 				"thirdName"
-			],
-			"type": "object"
+			]
 		},
 		"Items": {
+			"description": "",
 			"properties": {
 				"items": {
 					"type": "array",
 					"items": {
 						"$ref": "#/definitions/Item"
-					}
+					},
+					"description": ""
 				}
 			},
+			"type": "object",
 			"required": [
 				"items"
-			],
-			"type": "object"
+			]
 		}
 	},
 	"info": {
 		"title": "items-api"
 	},
 	"paths": {
-		"/Items/{id}": {
+		"/items/{itemId}": {
 			"get": {
-				"operationId": "GetItems",
+				"operationId": "ItemsGetItems",
 				"produces": [
 					"application/json"
 				],
@@ -56,18 +58,12 @@
 						}
 					}
 				},
-				"security": [],
+				"description": "",
 				"parameters": [
 					{
+						"description": "",
 						"in": "path",
-						"name": "id",
-						"required": true,
-						"format": "double",
-						"type": "number"
-					},
-					{
-						"in": "query",
-						"name": "name",
+						"name": "itemId",
 						"required": true,
 						"type": "string"
 					}
@@ -75,9 +71,6 @@
 			}
 		}
 	},
-	"produces": [
-		"application/json"
-	],
 	"swagger": "2.0",
 	"securityDefinitions": {}
 }

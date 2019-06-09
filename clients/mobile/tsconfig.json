@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig-common",
   "compilerOptions": {
     "noEmit": true,
     "lib": ["dom", "esnext"],

@@ -2,15 +2,19 @@
   "name": "items-api",
   "main": "index.js",
   "scripts": {
-    "generate-spec": "npx tsoa swagger",
+    "generate-spec": "swaggerGen -c ./swaggerConfig.json",
     "watch": "nodemon -x 'npm run generate-spec'  --ignore build/spec --ext ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "express": "^4.17.1",
-    "tsoa": "^2.4.0"
+    "typescript-rest": "^2.1.0"
   },
   "devDependencies": {
-    "typescript": "^3.5.1"
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "eslint": "^5.16.0",
+    "typescript": "^3.5.1",
+    "typescript-rest-swagger": "^0.1.0"
   }
 }
