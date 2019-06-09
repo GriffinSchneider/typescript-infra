@@ -34,8 +34,8 @@ async function script() {
     async responseInterceptor(res, params): Promise<void> {
     }
   })
-  const res = await api.itemsItemIdGet({
-    itemId: 'griffin',
+  const res = await api.itemsAccountIdGet({
+    accountId: 'griffin',
   });
   if (isFoo(res)) {
     console.log(res.body.items)
