@@ -6,10 +6,12 @@ export interface Item {
 
 export interface Items {
   items: Array<Item>;
+  page: number;
 }
 
 export async function fetchItems(accountId: string): Promise<Items> {
   return {
+    page: 0,
     items: [
       { name: `Hello ${accountId}`, otherName: 'griffin', thirdName: '3' }
     ]
