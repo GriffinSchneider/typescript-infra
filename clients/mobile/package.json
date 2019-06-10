@@ -2,8 +2,6 @@
   "name": "mobile",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "generate-api-clients": "npx ts-node scripts/generate-api-clients.ts",
-    "watch": "nodemon  -x 'npm run generate-api-clients' --ignore build/api-clients --ext json --watch '../../shared/build/'",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
@@ -19,7 +17,8 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-web": "^0.11.4",
     "rest-api-support": "^1.0.2",
-    "ts-get": "^1.0.5"
+    "ts-get": "^1.0.5",
+    "@common/items-api-client": "*"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.134",
@@ -30,9 +29,9 @@
     "babel-preset-expo": "^5.1.1",
     "eslint": "^5.16.0",
     "eslint-plugin-react": "^7.13.0",
-    "small-swagger-codegen": "^1.14.0",
     "ts-node": "^8.2.0",
     "typescript": "^3.4.5"
   },
+  "version": "1.0.0",
   "private": true
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { get } from 'ts-get';
-import ItemsAPI, {Items} from './build/api-clients/items-api';
+import ItemsAPI, {Items} from '@common/items-api-client';
 // @ts-ignore
 import { ReactNativeEventSource } from 'rest-api-support';
 

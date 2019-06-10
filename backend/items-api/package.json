@@ -19,5 +19,7 @@
     "eslint": "^5.16.0",
     "typescript": "^3.5.1",
     "typescript-rest-swagger": "^0.1.0"
-  }
+  },
+  "private": true,
+  "version": "1.0.0"
 }
