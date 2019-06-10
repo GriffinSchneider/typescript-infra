@@ -9,9 +9,9 @@ export interface Items {
 }
 
 export async function fetchItems(accountId: string): Promise<Items> {
-    return {
-        items: [
-            { name: `Hello ${accountId}`, otherName: 'griffin', thirdName: '3' }
-        ]
-     };
+  return {
+    items: [
+      { name: `Hello ${accountId}`, otherName: 'griffin', thirdName: '3' }
+    ]
+  };
 }
