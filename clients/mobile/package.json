@@ -10,6 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@common/items-api-client": "../../shared/build/api-clients/items-api",
     "expo": "^33.0.0",
     "lodash": "^4.17.11",
     "react": "16.8.3",
@@ -17,8 +18,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-web": "^0.11.4",
     "rest-api-support": "^1.0.2",
-    "ts-get": "^1.0.5",
-    "@common/items-api-client": "*"
+    "ts-get": "^1.0.5"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.134",

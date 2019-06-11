@@ -4,14 +4,6 @@
   "workspaces": {
     "packages": [
       "shared/build/api-clients/*",
-      "clients/*",
-      "backend/*"
-    ],
-    "nohoist": [
-      "*",
-      "**/*",
-      "shared/build/api-clients/*",
-      "clients/*",
       "backend/*"
     ]
   },
