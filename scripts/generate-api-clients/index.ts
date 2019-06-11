@@ -16,5 +16,5 @@ async function proc(cwd: string, cmd: string) {
   const configPath = path.resolve(__dirname, 'codegen-config.json');
   await proc('.', `npx small-swagger-codegen ${configPath}`);
   // TODO: Read package names from codegen config once it supports multiple package names.
-  await proc('.', `yarn update @common/items-api-client`);
+  await proc('.', `yarn upgrade @common/items-api-client`);
 })();

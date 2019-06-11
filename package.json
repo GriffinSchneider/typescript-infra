@@ -20,6 +20,7 @@
     "typescript": "^3.5.1"
   },
   "dependencies": {
+    "@common/items-api-client": "1.0.0",
     "nodemon": "^1.19.1",
     "small-swagger-codegen": "^1.15.2"
   }
