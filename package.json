@@ -9,15 +9,13 @@
   },
   "scripts": {
     "generate-api-clients": "npx ts-node scripts/generate-api-clients",
-    "watch": "nodemon -x 'npm run generate-api-clients' --ext json --watch './shared/build/api-specs'",
-    "bootstrap": "lerna "
+    "watch": "nodemon -x 'npm run generate-api-clients' --ext json --watch './shared/build/api-specs'"
   },
   "devDependencies": {
     "@types/node": "^12.0.7",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
     "@typescript-eslint/parser": "^1.9.0",
     "eslint": "^5.16.0",
-    "lerna": "^3.14.1",
     "ts-node": "^8.2.0",
     "typescript": "^3.5.1"
   },
