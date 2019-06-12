@@ -14,6 +14,7 @@
     "emitDecoratorMetadata": true,
     "sourceMap": true,
     "incremental": true,
-    "composite": true
+    "composite": true,
+    "esModuleInterop": true
   }
 }
