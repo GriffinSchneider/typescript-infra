@@ -13,6 +13,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "sourceMap": true,
-    "incremental": true
+    "incremental": true,
+    "composite": true
   }
 }
