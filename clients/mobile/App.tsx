@@ -36,14 +36,11 @@ export default class App extends React.Component<void, {
     super();
     this.state = {}
   }
-  public render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-        <Text>{JSON.stringify(get(this.state, it => it.items.items), null, 2)}</Text>
-      </View>
-    );
-  }
+  public render = () => <View style={styles.container}>
+    <Text>Open up App.tsx to start working on your app!</Text>
+    <Text>{JSON.stringify(get(this.state, it => it.items.items), null, 2)}</Text>
+  </View>;
+
   public async componentDidMount() {
     this.setState({ items: await getItems() });
   }
