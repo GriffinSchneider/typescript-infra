@@ -2,10 +2,10 @@
   "name": "items-api",
   "main": "build/index.js",
   "scripts": {
-    "start": "npx tsc && node build/index.js --inspect",
+    "start": "npx tsc && node build/src/index.js --inspect",
     "barrels": "npx barrelsby --directory 'src/controllers' --location top --name barrel --delete",
-    "generate-spec": "npm run barrels && swaggerGen -c ./swaggerConfig.json",
-    "watch": "nodemon -x 'npm run generate-spec && npm run start'  --ignore build/spec --ignore src/controllers/barrel.ts --ext ts",
+    "generate-spec": "npm run --silent barrels && swaggerGen -c ./swaggerConfig.json",
+    "watch": "nodemon -q -x 'npm run --silent generate-spec && npm run --silent start'  --ignore build --ignore src/controllers/barrel.ts --ext ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
