@@ -5,7 +5,7 @@ export interface Item {
 }
 
 export interface Items {
-  items: Array<Item>;
+  items: Item[];
   page: number;
 }
 

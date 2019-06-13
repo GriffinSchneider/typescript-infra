@@ -13,3 +13,5 @@ export function startup(opts: { apiName: string }) {
     console.log('Rest Server listening on port 3000!');
   });
 }
+
+export * from 'typescript-rest';
