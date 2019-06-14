@@ -15,6 +15,7 @@
     "sourceMap": true,
     "incremental": true,
     "composite": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "moduleResolution": "node"
   }
 }

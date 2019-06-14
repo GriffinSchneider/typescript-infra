@@ -7,7 +7,6 @@
     "baseUrl": ".",
     "rootDirs": [
       "src/"
-    ],
-    "esModuleInterop": true
+    ]
   }
 }
