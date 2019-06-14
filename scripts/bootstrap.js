@@ -30,7 +30,7 @@ async function script() {
   await proc('.', 'yarn install');
 
   console.log('Generating backend specs...')
-  await proc('./backend/items-api', 'yarn run generate-spec');
+  await proc('.', 'npx lerna run generate-spec');
   console.log('Generating api clients...')
   await proc('.', 'yarn run generate-api-clients');
 
