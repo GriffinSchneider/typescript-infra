@@ -1,4 +1,10 @@
 // @ts-ignore
+
+// TODO: Real watching, so that whenever @common/backend changes, all the services
+// that depend on it get rebuilt and restarted.
+// Build an api and its dependencies like this:
+//   npx lerna run build --scope items-api --include-filtered-dependencies
+
 import concurrently from 'concurrently';
 concurrently([{
   command: 'npm run --silent watch-api-clients',

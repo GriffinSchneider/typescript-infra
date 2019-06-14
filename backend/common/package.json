@@ -1,5 +1,7 @@
 {
   "name": "@common/backend",
+  "private": true,
+  "version": "1.0.0",
   "main": "build/src/index.js",
   "scripts": {
     "build": "npx tsc",
@@ -9,13 +11,5 @@
   "dependencies": {
     "express": "^4.17.1",
     "typescript-rest": "^2.1.0"
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^1.9.0",
-    "@typescript-eslint/parser": "^1.9.0",
-    "eslint": "^5.16.0",
-    "typescript": "^3.5.1"
-  },
-  "private": true,
-  "version": "1.0.0"
+  }
 }

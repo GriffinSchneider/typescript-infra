@@ -22,6 +22,9 @@ async function generateClient(name: string) {
   const newPackage = { ...JSON.parse(packageString), main: 'index.js' };
   fs.writeFileSync(packagePath, JSON.stringify(newPackage, null, 2));
 
+  // The mobile client uses a file path dependency for these modules, since React Native doesn't
+  // work with symlinked dependencies. So, when the client changes, we need to explicitly install
+  // the new version.
   await proc('clients/mobile', `yarn upgrade --silent @common/${name}-client`);
 }
 
@@ -29,6 +32,7 @@ async function generateClient(name: string) {
   const configPath = path.resolve(__dirname, 'codegen-config.json');
   await proc('.', `npx small-swagger-codegen ${configPath}`);
   // TODO: Read package names from codegen config once it supports multiple package names.
+  // Or better, generate codegen-config.json and swaggerConfig.json.
   await generateClient('items-api');
   console.log('API client generation complete.');
 })();

@@ -8,8 +8,8 @@ async function proc(cwd, cmd) {
     cwd,
     encoding: 'utf8'
   });
-  console.log(stdout)
-  console.log(stderr)
+  console.log(stdout);
+  console.log(stderr);
 }
 
 async function generatePlaceholder(name, dir) {
@@ -25,14 +25,15 @@ async function script() {
   // though, which means we can't `yarn install` until they're generated, but we can't generate them until we
   // `yarn install`. So, we'll make placeholder package.jsons for all generated packages, then `yarn install` will work
   // and then we can generate them for real.
-  console.log('Generating placeholders...')
-  await generatePlaceholder('@common/items-api-client', 'shared/build/api-clients/items-api')
+  console.log('Generating placeholders...');
+  // TODO: Don't hardcode client names
+  await generatePlaceholder('@common/items-api-client', 'shared/build/api-clients/items-api');
   await proc('.', 'yarn install');
 
-  console.log('Generating backend specs...')
+  console.log('Generating backend specs...');
   await proc('.', 'npx lerna run generate-spec');
-  console.log('Generating api clients...')
-  await proc('.', 'yarn run generate-api-clients');
+  console.log('Generating api clients...');
+  await proc('.', 'npm run generate-api-clients');
 
   // Now, we have to `yarn install` again to pick up any dependencies of the api clients we just generated.
   await proc('.', 'yarn install');

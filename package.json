@@ -3,8 +3,8 @@
   "private": true,
   "workspaces": {
     "packages": [
-      "shared/build/api-clients/*",
-      "backend/*"
+      "backend/*",
+      "shared/build/api-clients/*"
     ]
   },
   "scripts": {
