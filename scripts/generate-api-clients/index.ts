@@ -19,7 +19,11 @@ async function generateClient(name: string) {
   // just modify the package.jsons to point them at the non-babel-ed code.
   const packagePath = path.join(__dirname, '../../shared/build/api-clients', name, 'package.json');
   const packageString = fs.readFileSync(packagePath, { encoding: 'utf8' });
-  const newPackage = { ...JSON.parse(packageString), main: 'index.js' };
+  const newPackage = {
+    ...JSON.parse(packageString),
+    main: 'index.js',
+    private: true,
+  };
   fs.writeFileSync(packagePath, JSON.stringify(newPackage, null, 2));
 
   // The mobile client uses a file path dependency for these modules, since React Native doesn't

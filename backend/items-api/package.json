@@ -2,13 +2,13 @@
   "name": "items-api",
   "private": true,
   "version": "1.0.0",
-  "main": "build/index.js",
+  "main": "build/src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "nodemon -q -x 'npm run --silent start' --ignore build --ignore src/controllers/barrel.ts --ext ts",
-    "start": "npm run --silent build && node build/src/index.js --inspect",
-    "build": "npm run --silent barrels && npx tsc && npm run --silent generate-spec",
-    "barrels": "npx barrelsby --directory 'src/controllers' --location top --name barrel --delete",
+    "start-watch": "nodemon -q -x 'npm run --silent start' --watch build/",
+    "start": "node build/src/index.js --inspect",
+    "build": "npm run --silent barrels && tsc && npm run --silent generate-spec && echo 'Build complete'",
+    "barrels": "barrelsby --directory 'src/controllers' --location top --name barrel --delete",
     "generate-spec": "swaggerGen -c ./swaggerConfig.json"
   },
   "dependencies": {
@@ -16,6 +16,8 @@
   },
   "devDependencies": {
     "barrelsby": "^2.1.1",
+    "nodemon": "^1.19.1",
+    "typescript": "^3.5.2",
     "typescript-rest-swagger": "^0.1.0"
   }
 }

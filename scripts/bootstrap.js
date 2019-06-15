@@ -35,7 +35,7 @@ async function script() {
   console.log('Generating api clients...');
   await proc('.', 'npm run generate-api-clients');
 
-  // Now, we have to `yarn install` again to pick up any dependencies of the api clients we just generated.
+  // Now we have to `yarn install` again to pick up any dependencies of the api clients we just generated.
   await proc('.', 'yarn install');
 
   await proc('./clients/mobile', 'yarn install');

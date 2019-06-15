@@ -13,6 +13,9 @@ module.exports = {
   rules: {
     indent: ['error', 2],
     '@typescript-eslint/indent': ['error', 2],
-    '@typescript-eslint/explicit-function-return-type': 0,
+    '@typescript-eslint/explicit-function-return-type': ['error', {
+      allowExpressions: true,
+      allowTypedFunctionExpressions: true,
+    }],
   },
 };
