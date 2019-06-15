@@ -26,42 +26,46 @@ function packageJsonForPackage(lernaPackage: LernaPackage): PackageJson {
   return JSON.parse(fs.readFileSync(packagePath, { encoding: 'utf8' }));
 }
 
-const lernaPackageList: LernaPackage[] = JSON.parse(
-  execSync('npx lerna ll --all --json', { encoding: 'utf8' })
-);
-const lernaPackageMap = new Map<string, LernaPackage>();
-lernaPackageList.forEach(p => {
-  p.packageJson = packageJsonForPackage(p);
-  lernaPackageMap.set(p.name, p);
-});
+function parsedLerna(command: string, cwd?: string): LernaPackage[] {
+  const retVal: LernaPackage[] = JSON.parse(execSync(command, { cwd, encoding: 'utf8' }));
+  return retVal.map(p => ({
+    ...p,
+    packageJson: packageJsonForPackage(p),
+  }));
+}
+
+const lernaPackageList = parsedLerna('npx lerna ll --loglevel=silent --all --json') ;
 
 function dependenciesForPackage(lernaPackage: LernaPackage): LernaPackage[] {
-  const dependencies: string[] = Object.keys(lernaPackage.packageJson.dependencies || {});
-  return Array.from(dependencies)
-    .map(d => lernaPackageMap.get(d))
-    .filter((p): p is LernaPackage => !!p)
-    .filter(p => p !== lernaPackage);
+  const depsAndSelf = parsedLerna(`npx lerna ll --loglevel=silent --all --json --scope ${lernaPackage.name} --include-filtered-dependencies`);
+  return depsAndSelf.filter(p => p.name !== lernaPackage.name);
+}
+
+function dependencyWatchCommandPartForPackage(lernaPackage: LernaPackage): string {
+  const dependencies = dependenciesForPackage(lernaPackage);
+  const dependencyWatchPaths = dependencies.map(d => path.join(d.location, 'build'));
+  return dependencyWatchPaths.map(p => `--watch "${p}"`).join(' ');
 }
 
 function buildCommandForPackage(lernaPackage: LernaPackage): ConcurrentlyCommand {
-  const dependencies = dependenciesForPackage(lernaPackage);
-  const dependencyWatchPaths = dependencies.map(d => path.join(d.location, 'build'));
-  const dependencyWatchCommand = dependencyWatchPaths.map(p => `--watch "${p}"`).join(' ');
+  const watchPart = dependencyWatchCommandPartForPackage(lernaPackage);
   const nodemon = 'npx nodemon -q --ext ts --ignore barrel.ts -x "npm run --silent build" --watch src/';
   const cd = `cd "${lernaPackage.location}"`;
   return {
-    command: `${cd} && ${nodemon} ${dependencyWatchCommand}`,
+    command: `${cd} && ${nodemon} ${watchPart}`,
     name: `build ${lernaPackage.name}`,
     prefixColor: 'blue',
   };
 }
 
 function runCommandForPackage(lernaPackage: LernaPackage): ConcurrentlyCommand | undefined {
-  const startWatch = get(lernaPackage, it => it.packageJson.scripts['start-watch']);
-  if (!startWatch) { return undefined; }
+  const start = get(lernaPackage, it => it.packageJson.scripts['start']);
+  if (!start) { return undefined; }
+  const watchPart = dependencyWatchCommandPartForPackage(lernaPackage);
+  const nodemon = 'npx nodemon -q -x "npm run --silent start" --watch build/';
   const cd = `cd "${lernaPackage.location}"`;
   return {
-    command: `${cd} && npm run --silent start-watch`,
+    command: `${cd} && ${nodemon} ${watchPart}`,
     name: `run ${lernaPackage.name}`,
     prefixColor: 'green',
   }
@@ -76,4 +80,5 @@ const commands = [
   ...lernaPackageList.map(buildCommandForPackage),
   ...lernaPackageList.map(runCommandForPackage).filter((c): c is ConcurrentlyCommand => !!c),
 ];
+console.log(commands)
 concurrently(commands);
