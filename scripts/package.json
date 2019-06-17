@@ -1,0 +1,15 @@
+{
+  "name": "@common/scripts",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npx tsc && echo 'Build complete'"
+  },
+  "dependencies": {
+    "@common/json": "*",
+    "concurrently": "^4.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.5.2"
+  }
+}

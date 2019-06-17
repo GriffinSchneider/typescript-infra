@@ -1,0 +1,12 @@
+{
+  "name": "@common/json",
+  "private": true,
+  "version": "1.0.0",
+  "main": "build/src/json.js",
+  "scripts": {
+    "build": "npx tsc && echo 'Build complete'"
+  },
+  "devDependencies": {
+    "typescript": "^3.5.2"
+  }
+}

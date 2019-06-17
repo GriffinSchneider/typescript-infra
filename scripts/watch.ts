@@ -1,10 +1,10 @@
-// Concurrently run a bunch of nodemon commands
 import { execSync } from 'child_process';
 import * as path from 'path';
 import * as fs from 'fs';
 // @ts-ignore
 import concurrently from 'concurrently';
 import { get } from 'ts-get';
+import { Json } from '@common/json';
 
 interface ConcurrentlyCommand {
   command: string;
@@ -21,13 +21,19 @@ interface PackageJson {
   scripts?: {[key: string]: string};
 }
 
-function packageJsonForPackage(lernaPackage: LernaPackage): PackageJson {
+function packageJsonForPackage(lernaPackage: LernaPackage) {
   const packagePath = path.join(lernaPackage.location, 'package.json');
-  return JSON.parse(fs.readFileSync(packagePath, { encoding: 'utf8' }));
+  const parsed = Json.parse(fs.readFileSync(packagePath, { encoding: 'utf8' }));
+  if (Json.isObject(parsed)) {
+    return parsed;
+  }
+  throw new Error()
 }
 
-function parsedLerna(command: string, cwd?: string): LernaPackage[] {
-  const retVal: LernaPackage[] = JSON.parse(execSync(command, { cwd, encoding: 'utf8' }));
+function parsedLerna(command: string, cwd?: string) {
+  const parsed = Json.parse(execSync(command, { cwd, encoding: 'utf8' }));
+  if (!Json.isArray(parsed)) { throw new Error(`Invalid Lerna data: ${parsed}`); }
+  const retVal = parsed as unknown as LernaPackage[];
   return retVal.map(p => ({
     ...p,
     packageJson: packageJsonForPackage(p),

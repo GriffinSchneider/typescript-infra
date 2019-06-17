@@ -1,7 +1,9 @@
 {
   "version": "1.0.0",
   "packages": [
+    "scripts",
     "backend/*",
+    "shared/*",
     "shared/build/api-clients/*"
   ],
   "npmClient": "yarn"
