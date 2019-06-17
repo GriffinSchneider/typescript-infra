@@ -1,4 +1,8 @@
 let parent = require('../.eslintrc');
-module.exports =  {
+module.exports = {
   ...parent,
+  rules: {
+    ...parent.rules,
+    'no-console': 'off',
+  }
 };

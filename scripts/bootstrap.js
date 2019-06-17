@@ -1,7 +1,7 @@
-const { promisify } = require('util');
-const { exec } = require('child_process');
-const fs = require('fs');
-const path = require('path');
+import { promisify } from 'util';
+import { exec } from 'child_process';
+import * as fs from 'fs';
+import * as path from 'path';
 
 async function proc(cwd, cmd) {
   const {stdout, stderr} = await promisify(exec)(cmd, {

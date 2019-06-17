@@ -13,20 +13,20 @@
     "bootstrap": "node scripts/bootstrap.js",
     "generate-api-clients": "npx ts-node scripts/generate-api-clients",
     "watch-api-clients": "nodemon -q -x 'npm run generate-api-clients' --ext json --watch './shared/build/api-specs'",
-    "watch": "npx ts-node scripts/watch.ts"
+    "watch": "npx ts-node scripts/watch.ts",
+    "lint": "eslint --ext=js,jsx,ts,tsx ."
   },
   "devDependencies": {
     "@types/lodash": "^4.14.134",
     "@types/node": "^12.0.7",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
     "@typescript-eslint/parser": "^1.9.0",
-    "concurrently": "^4.1.0",
     "eslint": "^5.16.0",
+    "eslint-plugin-import": "^2.17.3",
     "lerna": "^3.15.0",
     "nodemon": "^1.19.1",
     "small-swagger-codegen": "^1.15.2",
-    "ts-get": "^1.0.5",
     "ts-node": "^8.2.0",
-    "typescript": "^3.5.1"
+    "typescript": "^3.5.2"
   }
 }
