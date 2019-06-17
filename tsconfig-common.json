@@ -13,6 +13,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "sourceMap": true,
+    "declarationMap": true,
     "incremental": true,
     "composite": true,
     "esModuleInterop": true,
