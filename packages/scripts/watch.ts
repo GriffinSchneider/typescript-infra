@@ -4,7 +4,7 @@ import * as fs from 'fs';
 // @ts-ignore
 import concurrently from 'concurrently';
 import { get } from 'ts-get';
-import { Json } from '@common/json';
+import { Json } from '@griffins/json';
 
 interface ConcurrentlyCommand {
   command: string;

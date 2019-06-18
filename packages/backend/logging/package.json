@@ -1,5 +1,5 @@
 {
-  "name": "@common/logging",
+  "name": "@griffins/logging",
   "private": true,
   "version": "1.0.0",
   "main": "build/src/index.js",

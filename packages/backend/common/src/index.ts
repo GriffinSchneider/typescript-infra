@@ -1,7 +1,7 @@
 import * as path from 'path';
 import express from 'express';
 import { Server } from 'typescript-rest';
-import { LoggingType, log } from '@common/logging';
+import { LoggingType, log } from '@griffins/logging';
 
 export function startup(opts: {
   apiName: string;

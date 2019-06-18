@@ -10,6 +10,6 @@
   },
   "opts": {
     "noOperationIds": true,
-    "packageName": "@common/items-api-client"
+    "packageName": "@griffins/items-api-client"
   }
 }

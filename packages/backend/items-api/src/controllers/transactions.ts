@@ -1,4 +1,4 @@
-import { Path, GET, PathParam } from '@common/backend';
+import { Path, GET, PathParam } from '@griffins/backend';
 import { fetchItems, Items } from '../lib/items';
 
 @Path("/transactions")

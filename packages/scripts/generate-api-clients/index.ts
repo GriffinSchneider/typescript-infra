@@ -28,7 +28,7 @@ async function generateClient(name: string) {
   // The mobile client uses a file path dependency for these modules, since React Native doesn't
   // work with symlinked dependencies. So, when the client changes, we need to explicitly install
   // the new version.
-  await proc(path.join(__dirname, '../../mobile'), `yarn upgrade --silent @common/${name}-client`);
+  await proc(path.join(__dirname, '../../mobile'), `yarn upgrade --silent @griffins/${name}-client`);
 }
 
 (async () => {

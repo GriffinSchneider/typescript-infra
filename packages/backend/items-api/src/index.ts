@@ -1,4 +1,4 @@
-import { startup } from '@common/backend';
+import { startup } from '@griffins/backend';
 
 // Import all controllers so their decorators get processed by typescript-rest.
 import './controllers/barrel';

@@ -1,5 +1,5 @@
 {
-  "name": "@common/json",
+  "name": "@griffins/json",
   "private": true,
   "version": "1.0.0",
   "main": "build/src/json.js",

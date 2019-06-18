@@ -1,12 +1,12 @@
 {
-  "name": "@common/scripts",
+  "name": "@griffins/scripts",
   "private": true,
   "version": "1.0.0",
   "scripts": {
     "build": "npx tsc && echo 'Build complete'"
   },
   "dependencies": {
-    "@common/json": "*",
+    "@griffins/json": "*",
     "concurrently": "^4.1.0",
     "ts-get": "^1.0.5"
   },

@@ -28,7 +28,7 @@ async function script() {
   // and then we can generate them for real.
   console.log('Generating placeholders...');
   // TODO: Don't hardcode client names
-  await generatePlaceholder('@common/items-api-client', 'packages/common/build/api-clients/items-api');
+  await generatePlaceholder('@griffins/items-api-client', 'packages/common/build/api-clients/items-api');
   await proc('.', 'yarn install');
 
   console.log('Generating backend specs...');
@@ -39,10 +39,10 @@ async function script() {
   // Now we have to `yarn install` again to pick up any dependencies of the api clients we just generated.
   await proc('.', 'yarn install');
 
-  // We're using Yarn workspaces via package.json, but that hoists all dependencies (including @common/ depdendencies)
+  // We're using Yarn workspaces via package.json, but that hoists all dependencies (including @griffins/ depdendencies)
   // into the top-level node_modules folder. The TypeScript compiler is perfectly happy with this setup, but
-  // WebStorm/VSCode seem unable to find the @common/ modules and start throwing errors. This lerna link command
-  // creates symlinks to all @common/ dependencies in each modules' local node_modules folder. The editors seem to like
+  // WebStorm/VSCode seem unable to find the @griffins/ modules and start throwing errors. This lerna link command
+  // creates symlinks to all @griffins/ dependencies in each modules' local node_modules folder. The editors seem to like
   // this much better.
   await proc('.', 'npx lerna link --force-local');
 }

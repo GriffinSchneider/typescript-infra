@@ -26,7 +26,7 @@ module.exports = {
     'no-restricted-properties': ['error', {
       object: 'JSON',
       property: 'parse',
-      message: 'JSON.parse() returns `any`, which turns off the type system. Use @common/json instead.'
+      message: 'JSON.parse() returns `any`, which turns off the type system. Use @griffins/json instead.'
     }],
     'import/no-extraneous-dependencies': 'error',
   },

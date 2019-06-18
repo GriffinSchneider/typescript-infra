@@ -1,5 +1,5 @@
 {
-  "name": "items-api",
+  "name": "@griffins/items-api",
   "private": true,
   "version": "1.0.0",
   "main": "build/src/index.js",
@@ -11,7 +11,7 @@
     "generate-spec": "swaggerGen -c ./swaggerConfig.json"
   },
   "dependencies": {
-    "@common/backend": "*"
+    "@griffins/backend": "*"
   },
   "devDependencies": {
     "barrelsby": "^2.1.1",
