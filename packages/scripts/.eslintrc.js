@@ -1,4 +1,4 @@
-let parent = require('../.eslintrc');
+let parent = require('../../.eslintrc');
 module.exports = {
   ...parent,
   rules: {

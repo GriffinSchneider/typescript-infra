@@ -1,7 +1,8 @@
-import { promisify } from 'util';
-import { exec } from 'child_process';
-import * as fs from 'fs';
-import * as path from 'path';
+/* eslint-disable @typescript-eslint/no-var-requires */
+const { promisify } = require('util');
+const { exec } = require('child_process');
+const fs = require('fs');
+const path = require('path');
 
 async function proc(cwd, cmd) {
   const {stdout, stderr} = await promisify(exec)(cmd, {
@@ -27,7 +28,7 @@ async function script() {
   // and then we can generate them for real.
   console.log('Generating placeholders...');
   // TODO: Don't hardcode client names
-  await generatePlaceholder('@common/items-api-client', 'shared/build/api-clients/items-api');
+  await generatePlaceholder('@common/items-api-client', 'packages/common/build/api-clients/items-api');
   await proc('.', 'yarn install');
 
   console.log('Generating backend specs...');

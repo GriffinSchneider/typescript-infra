@@ -1,10 +1,10 @@
 {
   "version": "1.0.0",
   "packages": [
-    "scripts",
-    "backend/*",
-    "shared/*",
-    "shared/build/api-clients/*"
+    "packages/scripts",
+    "packages/backend/*",
+    "packages/common/*",
+    "packages/common/build/api-clients/*"
   ],
   "npmClient": "yarn"
 }

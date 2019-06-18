@@ -2,7 +2,6 @@ import { promisify } from 'util';
 import { exec } from 'child_process';
 import * as path from 'path';
 import * as fs from 'fs';
-import console = require('console');
 
 async function proc(cwd: string, cmd: string) {
   const {stdout, stderr} = await promisify(exec)(cmd, {
@@ -17,7 +16,7 @@ async function generateClient(name: string) {
   // Currently, these generated clients are expecting to be built with babel, so their package.json points where
   // the babel output will go. But, the non-babel-ed code actually works fine with TypeScript, so to save time we'll
   // just modify the package.jsons to point them at the non-babel-ed code.
-  const packagePath = path.join(__dirname, '../../shared/build/api-clients', name, 'package.json');
+  const packagePath = path.join(__dirname, '../../common/build/api-clients', name, 'package.json');
   const packageString = fs.readFileSync(packagePath, { encoding: 'utf8' });
   const newPackage = {
     ...JSON.parse(packageString),
@@ -29,7 +28,7 @@ async function generateClient(name: string) {
   // The mobile client uses a file path dependency for these modules, since React Native doesn't
   // work with symlinked dependencies. So, when the client changes, we need to explicitly install
   // the new version.
-  await proc('clients/mobile', `yarn upgrade --silent @common/${name}-client`);
+  await proc(path.join(__dirname, '../../mobile'), `yarn upgrade --silent @common/${name}-client`);
 }
 
 (async () => {

@@ -3,17 +3,17 @@
   "private": true,
   "workspaces": {
     "packages": [
-      "scripts",
-      "backend/*",
-      "shared/*",
-      "shared/build/api-clients/*"
+      "packages/scripts",
+      "packages/backend/*",
+      "packages/common/*",
+      "packages/common/build/api-clients/*"
     ]
   },
   "scripts": {
-    "bootstrap": "node scripts/bootstrap.js",
-    "generate-api-clients": "npx ts-node scripts/generate-api-clients",
-    "watch-api-clients": "nodemon -q -x 'npm run generate-api-clients' --ext json --watch './shared/build/api-specs'",
-    "watch": "npx ts-node scripts/watch.ts",
+    "bootstrap": "node packages/scripts/bootstrap.js",
+    "generate-api-clients": "npx ts-node packages/scripts/generate-api-clients",
+    "watch-api-clients": "nodemon -q -x 'npm run generate-api-clients' --ext json --watch './packages/common/build/api-specs'",
+    "watch": "npx ts-node packages/scripts/watch.ts",
     "lint": "eslint --ext=js,jsx,ts,tsx ."
   },
   "devDependencies": {

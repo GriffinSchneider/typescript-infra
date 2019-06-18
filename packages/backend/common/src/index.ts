@@ -11,7 +11,7 @@ export function startup(opts: {
   Server.buildServices(app);
   Server.swagger(app, {
     endpoint: 'api-docs',
-    filePath: path.resolve(__dirname, `../../../../shared/build/api-specs/${opts.apiName}-spec/swagger.json`),
+    filePath: path.resolve(__dirname, `../../../../common/build/api-specs/${opts.apiName}-spec/swagger.json`),
   });
   app.listen(3000, function() {
     log('Rest Server listening on port 3000!');

@@ -1,9 +1,9 @@
 {
   "language": "js",
-  "output": "../../shared/build/api-clients/items-api",
+  "output": "../../common/build/api-clients/items-api",
   "specs": {
     "ItemsApi": {
-      "spec": "../../shared/build/api-specs/items-api-spec/swagger.json",
+      "spec": "../../common/build/api-specs/items-api-spec/swagger.json",
       "className": "ItemsAPI",
       "basePath": ""
     }

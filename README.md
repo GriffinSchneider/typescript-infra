@@ -7,12 +7,12 @@ Assuming you have nodejs and yarn installed, starting in the root of this repo:
 yarn run bootstrap # You only need to run this once when you first clone the repo
 yarn run watch
 ```
-Now all the backend services are running, and there are various file watchers that should rebuild everything whenever a file changes. Swagger specs are automatically generated into shared/build/api-specs, and JS/TypeScript clients to call the APIs are automatically generated into shared/build/api-clients.
+Now all the backend services are running, and there are various file watchers that should rebuild everything whenever a file changes. Swagger specs are automatically generated into packages/common/build/api-specs, and JS/TypeScript clients to call the APIs are automatically generated into packages/common/build/api-clients.
 
 
 If you want to run the mobile app, do this in a second terminal:
 ```
-cd clients/mobile
+cd packages/mobile
 yarn install
 yarn run start
 ```

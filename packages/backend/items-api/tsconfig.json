@@ -1,12 +1,12 @@
 {
-  "extends": "../tsconfig-common",
-  "include": [
-    "./**/*"
-  ],
+  "extends": "../../../tsconfig-common",
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
     "outDir": "./build",
-    "rootDir": "."
+    "baseUrl": ".",
+    "rootDirs": [
+      "src/"
+    ]
   }
 }

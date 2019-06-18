@@ -86,5 +86,5 @@ const commands = [
   ...lernaPackageList.map(buildCommandForPackage),
   ...lernaPackageList.map(runCommandForPackage).filter((c): c is ConcurrentlyCommand => !!c),
 ];
-console.log(commands)
+console.log(commands);
 concurrently(commands);

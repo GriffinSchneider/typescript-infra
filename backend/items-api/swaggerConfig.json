@@ -1,6 +1,0 @@
-{
-  "swagger": {
-    "outputDirectory": "../../shared/build/api-specs/items-api-spec",
-    "entryFile": "./src/index.ts"
-  }
-}
