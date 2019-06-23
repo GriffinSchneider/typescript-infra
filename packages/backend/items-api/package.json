@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node build/src/index.js --inspect",
-    "build": "npm run --silent barrels && tsc && npm run --silent generate-spec && echo 'Build complete'",
+    "build": "npm run --silent barrels && npm run --silent generate-spec && tsc && echo 'Build complete'",
     "barrels": "barrelsby --directory 'src/controllers' --location top --name barrel --delete",
     "generate-spec": "swaggerGen -c ./swaggerConfig.json"
   },

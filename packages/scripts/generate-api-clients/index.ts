@@ -32,6 +32,7 @@ async function generateClient(name: string) {
 }
 
 (async () => {
+  console.log('Beginning API client generation...');
   const configPath = path.resolve(__dirname, 'codegen-config.json');
   await proc('.', `npx small-swagger-codegen ${configPath}`);
   // TODO: Read package names from codegen config once it supports multiple package names.

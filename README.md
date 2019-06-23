@@ -4,7 +4,7 @@ Playing with a full-stack typescript monorepo
 ## Setup
 Assuming you have nodejs and yarn installed, starting in the root of this repo:
 ```sh
-yarn run bootstrap # You only need to run this once when you first clone the repo
+yarn install
 yarn run watch
 ```
 Now all the backend services are running, and there are various file watchers that should rebuild everything whenever a file changes. Swagger specs are automatically generated into packages/common/build/api-specs, and JS/TypeScript clients to call the APIs are automatically generated into packages/common/build/api-clients.

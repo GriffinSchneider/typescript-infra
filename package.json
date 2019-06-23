@@ -10,9 +10,9 @@
     ]
   },
   "scripts": {
-    "bootstrap": "node packages/scripts/bootstrap.js",
+    "preinstall": "node packages/scripts/preinstall.js",
+    "postinstall": "node packages/scripts/postinstall.js",
     "generate-api-clients": "npx ts-node packages/scripts/generate-api-clients",
-    "watch-api-clients": "nodemon -q -x 'npm run generate-api-clients' --ext json --watch './packages/common/build/api-specs'",
     "watch": "npx ts-node packages/scripts/watch.ts",
     "lint": "eslint --ext=js,jsx,ts,tsx ."
   },
