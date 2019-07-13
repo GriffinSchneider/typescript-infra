@@ -31,7 +31,7 @@ const routeTemplates = [...commonTemplates, {
 
 const clientTemplates = [...commonTemplates, {
   source: path.resolve(__dirname, 'clientTemplate.handlebars'),
-  filename: () => 'index.ts',
+  filename: () => 'src/index.ts',
 }, {
   source: path.resolve(__dirname, 'clientPackageTemplate.handlebars'),
   filename: () => 'package.json',

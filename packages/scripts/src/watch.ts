@@ -37,7 +37,7 @@ function buildCommandForPackage(pack: LernaPackage): ConcurrentlyCommand | undef
   const watchPart = dependencyWatchPaths.map(p => `--watch "${p}"`).join(' ');
   const dependencyIfs = dependencyWatchPaths.map(p => `[ -z "$(find ${p} -prune -empty)" ] && `).join('');
   const buildPart = `${dependencyIfs}npm run --silent build || echo 'Waiting until all dependencies of ${pack.name} are built...'`;
-  const nodemonPart = `npx nodemon -q --ext ts,yaml,handlebars --ignore routes.ts --ignore server.ts -x '${buildPart}' --watch src/ --watch spec/`;
+  const nodemonPart = `npx nodemon -q --ext ts,yaml,handlebars --ignore routes.ts --ignore router.ts -x '${buildPart}' --watch src/ --watch spec/`;
   const cdPart = `cd "${pack.location}"`;
   return {
     command: `${cdPart} && ${nodemonPart} ${watchPart}`,
