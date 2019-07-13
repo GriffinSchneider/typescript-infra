@@ -1,4 +1,4 @@
-import { Items } from "../generated/server";
+import { Items } from "../generated/router";
 
 export async function fetchItems(accountId: string): Promise<Items> {
   return {

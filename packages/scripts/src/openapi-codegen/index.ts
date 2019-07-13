@@ -25,8 +25,8 @@ const commonTemplates = [{
 }] as const;
 
 const routeTemplates = [...commonTemplates, {
-  source: path.resolve(__dirname, 'serverTemplate.handlebars'),
-  filename: () => 'server.ts',
+  source: path.resolve(__dirname, 'serverRouterTemplate.handlebars'),
+  filename: () => 'router.ts',
 }] as const;
 
 const clientTemplates = [...commonTemplates, {

@@ -53,6 +53,13 @@ function recordRouteRegistration(method: string, path: string, registrations: Ro
 export type HTTPMethod  = 'get' | 'post' | 'put' | 'patch' | 'delete' | 'head' | 'options' | 'trace';
 export type InputLocation = 'body' | 'path' | 'query' | 'header';
 
+export class Router<ContextType extends Context> {
+  protected routes: ((service: Service<ContextType>) => void)[] = [];
+  public apply(service: Service<ContextType>): void {
+    this.routes.forEach(r => r(service));
+  }
+}
+
 export class Service<ContextType extends Context> {
   private routeRegistrations: Record<string, Record<string, boolean>> = {};
   private app = express()

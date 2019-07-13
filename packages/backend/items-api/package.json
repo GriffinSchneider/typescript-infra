@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node build/src/index.js --inspect",
-    "build": "openapi-codegen items-api && npm run  --silent openapi-codegen && generate-route-barrels && tsc && echo 'Build complete'",
+    "build": "openapi-codegen items-api && generate-route-barrels && tsc && echo 'Build complete'",
     "openapi-codegen": "openapi-codegen items-api"
   },
   "dependencies": {

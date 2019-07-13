@@ -1,7 +1,7 @@
 import { Service } from '@griffins/rest-server';
-import { routes } from './generated/routes';
+import { routers } from './generated/routes';
 import { Context} from "./context";
 
 const service = new Service(new Context());
-routes.forEach(r => r(service));
+routers.forEach(r => r.apply(service));
 service.startup();
