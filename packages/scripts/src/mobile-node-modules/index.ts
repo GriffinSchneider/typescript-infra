@@ -3,10 +3,10 @@
 // symlinks. So, we'll copy the entire node_modules folder from the top level into the
 // mobile/ folder, resolving symlinks along the way.
 
-import rsync from 'rsync';
+import Rsync from 'rsync';
 import path from 'path';
 
-const r = new rsync()
+const r = new Rsync()
   .archive()
   .set('copy-links')
   .delete()
@@ -15,7 +15,7 @@ const r = new rsync()
   .destination(path.join(__dirname, '../../../mobile'));
 
 console.log('Injecting mobile node_modules...');
-r.execute((err, code, cmd) => {
+r.execute(err => {
   if (err) { throw err; }
   console.log('Mobile node_modules injected.');
-})
+});

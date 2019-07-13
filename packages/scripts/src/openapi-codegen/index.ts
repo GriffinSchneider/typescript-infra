@@ -3,7 +3,6 @@
 
 // @ts-ignore
 import { render } from 'small-swagger-codegen';
-import { execSync } from 'child_process';
 import _ from 'lodash';
 import yaml from 'js-yaml';
 import minimist from 'minimist';
@@ -11,10 +10,10 @@ import * as path from 'path';
 import * as fs from 'fs';
 
 const argv = minimist(process.argv.slice(2));
-const apiName = argv._[0];
-if (!apiName) { throw new Error('Missing api name.'); }
+const inputApiName = argv._[0];
+if (!inputApiName) { throw new Error('Missing api name.'); }
 
-console.log(`Beginning OpenAPI codegen for ${apiName}...`);
+console.log(`Beginning OpenAPI codegen for ${inputApiName}...`);
 
 const commonTemplates = [{
   source: path.resolve(__dirname, 'modelTemplate.handlebars'),
@@ -68,7 +67,7 @@ function configureHandlebars(handlebars: any): void {
     }
     const trimmed = string.trim().replace(/\n/g, ' ');
     const numSpaces = string.search(/\S/);
-    return `${' '.repeat(numSpaces)}/// ${trimmed}\n`;
+    return `${' '.repeat(numSpaces)}// ${trimmed}\n`;
   });
   handlebars.registerHelper('tsCodecName', function codecName(ident: string): string {
     const ioTsMap: Record<string, string> = {
@@ -87,12 +86,12 @@ function configureHandlebars(handlebars: any): void {
     if (objectMatch) { return `t.record(t.string, ${codecName(objectMatch[1])})`; }
     return `${ident}Codec`;
   });
-  handlebars.registerHelper('eachRequiredProp', function eachRequiredProp(context: any, options: any) {
+  handlebars.registerHelper('eachRequiredProp', (context: any, options: any) => {
     if (!Array.isArray(context)) { throw new Error(`Expected array for eachRequiredProp but got ${context}`); }
     const filtered = _.filter(context, p => p.isRequired);
     return filtered.reduce((acc, p) => acc + options.fn(p), '');
   });
-  handlebars.registerHelper('eachOptionalProp', function eachOptionalProp(context: any, options: any) {
+  handlebars.registerHelper('eachOptionalProp', (context: any, options: any) => {
     if (!Array.isArray(context)) { throw new Error(`Expected array for eachOptionalProp but got ${context}`); }
     const filtered = _.filter(context, p => !p.isRequired);
     return filtered.reduce((acc, p) => acc + options.fn(p), '');
@@ -104,9 +103,9 @@ function generate(apiName: string, templates: any, options: any, output: string)
   const typescriptServerLanguageSpec = { templates, typeMap, configureHandlebars };
   const specPath = path.resolve(__dirname, `../../../backend/${apiName}/spec/${apiName}-spec.yaml`);
   const specData = fs.readFileSync(specPath, 'utf8');
-  const spec =  yaml.safeLoad(specData);
+  const spec = yaml.safeLoad(specData);
   const apis = { [apiName]: { basePath: '', spec } };
-  const opts = { 'noOperationIds': true, ...options };
+  const opts = { noOperationIds: true, ...options };
   render(typescriptServerLanguageSpec, apis, opts, output);
 }
 
@@ -117,10 +116,10 @@ function generateRoutes(apiName: string) {
 
 function generateClient(apiName: string) {
   const output = path.resolve(__dirname, `../../../common/generated/${apiName}-client`);
-  generate(apiName, clientTemplates, { packageName: `@griffins/${apiName}-client`}, output);
+  generate(apiName, clientTemplates, { packageName: `@griffins/${apiName}-client` }, output);
 }
 
-generateRoutes(apiName);
-generateClient(apiName);
+generateRoutes(inputApiName);
+generateClient(inputApiName);
 
-console.log(`OpenAPI codegen for ${apiName} complete.`);
+console.log(`OpenAPI codegen for ${inputApiName} complete.`);

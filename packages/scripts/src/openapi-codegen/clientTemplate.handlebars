@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/array-type, @typescript-eslint/no-use-before-define */
+/* eslint-disable max-len, @typescript-eslint/array-type, @typescript-eslint/no-use-before-define, no-use-before-define */
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ApiClient as BaseApiClient, ApiResponse, DateFromISOString } from '@griffins/api-client-support';
@@ -14,7 +14,7 @@ export class ApiClient extends BaseApiClient {
     RouteName extends keyof typeof routeInfo,
     InputType extends t.TypeOf<typeof routeInfo[RouteName]['inputCodec']>,
     ResponseType extends t.TypeOf<typeof routeInfo[RouteName]['responseCodec']>
-  > (
+  >(
     routeName: RouteName,
     input: InputType,
   ): Promise<ApiResponse<ResponseType>> {

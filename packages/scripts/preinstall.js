@@ -16,7 +16,7 @@ function generatePlaceholder(name, dir) {
     name,
     version: '1.0.0',
     dependencies: { '@griffins/api-client-support': '*', 'io-ts': '^1.10.3' },
-    devDependencies: { 'typescript': '^3.5.2' },
+    devDependencies: { typescript: '^3.5.2' },
   }), 'utf8');
 }
 

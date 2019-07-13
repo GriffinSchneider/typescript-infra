@@ -9,7 +9,7 @@ export interface {{{jsIdentifier name}}} {
   {{{name}}}{{#unless isRequired}}?{{/unless}}: {{{jsIdentifier type}}};
 {{/each}}
 }
-export const {{{tsCodecName name}}}: t.Type<{{{jsIdentifier name}}}> = t.recursion('{{{tsCodecName name}}}', (): t.Type<{{{jsIdentifier name}}}> =>
+export const {{{tsCodecName name}}}: t.Type<{{{jsIdentifier name}}}> = t.recursion('{{{tsCodecName name}}}', (): t.Type<{{{jsIdentifier name}}}> => (
   t.intersection([
     t.type({
       {{#eachRequiredProp properties}}
@@ -22,7 +22,7 @@ export const {{{tsCodecName name}}}: t.Type<{{{jsIdentifier name}}}> = t.recursi
       {{/eachOptionalProp}}
     }),
   ])
-);
+));
 
 {{#if nestedModels.length}}
 {{#each nestedModels}}

@@ -4,7 +4,7 @@ import * as fs from 'fs';
 // @ts-ignore
 import concurrently from 'concurrently';
 import { get } from 'ts-get';
-import { LernaPackage, getProjectPackages } from "./lib";
+import { LernaPackage, getProjectPackages } from './lib';
 
 interface ConcurrentlyCommand {
   command: string;
@@ -50,7 +50,7 @@ function buildCommandForPackage(pack: LernaPackage): ConcurrentlyCommand | undef
 // output and start it if it's been built.
 function runCommandForPackage(pack: LernaPackage): ConcurrentlyCommand | undefined {
   if (isMobile(pack)) { return undefined; }
-  const start = get(pack, it => it.packageJson.scripts['start']);
+  const start = get(pack, it => it.packageJson.scripts.start);
   if (!start) { return undefined; }
   const dependencyWatchPaths = pack.dependencies.map(d => path.join(d.location, 'build'));
   const watchPart = dependencyWatchPaths.map(p => `--watch "${p}"`).join(' ');
@@ -61,7 +61,7 @@ function runCommandForPackage(pack: LernaPackage): ConcurrentlyCommand | undefin
     command: `${cd} && ${nodemon} ${watchPart}`,
     name: `run ${pack.name}`,
     prefixColor: 'green',
-  }
+  };
 }
 
 function injectMobileNodeModulesCommand(): ConcurrentlyCommand {

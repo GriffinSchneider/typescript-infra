@@ -21,12 +21,12 @@ function packageJsonForPackage(lernaPackage: LernaPackage): PackageJson {
 
 function dependenciesForPackage(lernaPackage: LernaPackage, allPackages: LernaPackage[]): LernaPackage[] {
   return Object.keys(lernaPackage.packageJson.dependencies || {})
-    .map(depName => allPackages.find(lernaPackage => lernaPackage.name === depName))
-    .filter((lernaDep?: LernaPackage): lernaDep is LernaPackage => !!lernaDep);
+    .map(depName => allPackages.find(dep => dep.name === depName))
+    .filter((dep?: LernaPackage): dep is LernaPackage => !!dep);
 }
 
 export function getProjectPackages(): LernaPackage[] {
-  const command = 'npx lerna ll --loglevel=silent --all --json'
+  const command = 'npx lerna ll --loglevel=silent --all --json';
   const parsed = JSON.parse(execSync(command, { encoding: 'utf8' })) as LernaPackage[];
   const withPackageJsons = parsed.map(p => ({
     ...p,
@@ -52,5 +52,3 @@ export function getProjectApiPackages(): LernaPackage[] {
     return true;
   });
 }
-
-

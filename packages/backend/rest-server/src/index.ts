@@ -1,16 +1,20 @@
 import * as t from 'io-ts';
 import _ from 'lodash';
+import { PathReporter } from 'io-ts/lib/PathReporter';
+import { Context } from './context';
+
 import express = require('express');
 import bodyParser = require('body-parser');
 import morgan = require('morgan');
-import { PathReporter } from 'io-ts/lib/PathReporter';
-import { Context } from './context';
-export * from  './context';
+export * from './context';
 
 export class DecodeError implements Error {
   public name: 'DecodeError' = 'DecodeError';
+
   public message: string;
+
   public errors: t.Errors;
+
   public constructor(errors: t.Errors) {
     this.message = PathReporter.report(t.failures(errors)).join('\n');
     this.errors = errors;
@@ -50,11 +54,12 @@ function recordRouteRegistration(method: string, path: string, registrations: Ro
   registrations[path][method] = true;
 }
 
-export type HTTPMethod  = 'get' | 'post' | 'put' | 'patch' | 'delete' | 'head' | 'options' | 'trace';
+export type HTTPMethod = 'get' | 'post' | 'put' | 'patch' | 'delete' | 'head' | 'options' | 'trace';
 export type InputLocation = 'body' | 'path' | 'query' | 'header';
 
 export class Router<ContextType extends Context> {
   protected routes: ((service: Service<ContextType>) => void)[] = [];
+
   public apply(service: Service<ContextType>): void {
     this.routes.forEach(r => r(service));
   }
@@ -62,6 +67,7 @@ export class Router<ContextType extends Context> {
 
 export class Service<ContextType extends Context> {
   private routeRegistrations: Record<string, Record<string, boolean>> = {};
+
   private app = express()
     .use(morgan('dev'))
     .use(bodyParser.json());
@@ -95,8 +101,8 @@ export class Service<ContextType extends Context> {
   }
 
   public startup() {
-    this.app.listen(3000, function() {
-      console.log('listening on port 3000!');
+    this.app.listen(3000, () => {
+      this.ctx.logger.debug('listening on port 3000!');
     });
   }
 }

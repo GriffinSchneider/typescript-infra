@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/array-type, @typescript-eslint/no-use-before-define */
+/* eslint-disable max-len, @typescript-eslint/array-type, @typescript-eslint/no-use-before-define, no-use-before-define */
 
 import * as t from 'io-ts';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -16,9 +16,9 @@ export class Router extends BaseRouter<Context> {
     RouteName extends keyof typeof routeInfo,
     InputType extends t.TypeOf<typeof routeInfo[RouteName]['inputCodec']>,
     ResponseType extends t.TypeOf<typeof routeInfo[RouteName]['responseCodec']>
-  > (
+  >(
     routeName: RouteName,
-    handler: (args: InputType, ctx: Context) => Promise<ResponseType>
+    handler: (args: InputType, ctx: Context) => Promise<ResponseType>,
   ): void {
     this.routes.push(service => {
       const { method, path, inputLocations, inputCodec, responseCodec } = routeInfo[routeName];

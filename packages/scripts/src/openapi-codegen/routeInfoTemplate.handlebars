@@ -7,7 +7,7 @@ const routeInfo = {
     method: '{{{method}}}',
     path: '{{{path}}}',
     inputLocations: {
-      {{#each params}}{{{name}}}: '{{{in}}}'{{#unless @last}}, {{/unless}}{{/each}}
+      {{#each params}}{{{name}}}: '{{{in}}}',{{/each}}
     },
     inputCodec: t.type({
       {{#each params}}
@@ -17,7 +17,7 @@ const routeInfo = {
       {{{name}}}: {{#unless isRequired}}t.union([{{/unless}}{{{tsCodecName type}}}{{~#unless isRequired}}, t.undefined]){{/unless}},
       {{/each}}
     }),
-    responseCodec: {{{tsCodecName response.type}}}
+    responseCodec: {{{tsCodecName response.type}}},
   },
 {{/each}}
 } as const;

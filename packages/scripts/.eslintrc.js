@@ -4,5 +4,6 @@ module.exports = {
   rules: {
     ...parent.rules,
     'no-console': 'off',
+    'no-restricted-properties': 'off',
   }
 };
