@@ -20,14 +20,16 @@ module.exports = {
     },
   },
   rules: {
-    indent: ['error', 2],
+    indent: 'off',
     '@typescript-eslint/indent': ['error', 2],
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-empty-interface': 'off', // Empty interfaces are required for circularly-referenced types.
     'no-restricted-properties': ['error', {
       object: 'JSON',
       property: 'parse',
       message: 'JSON.parse() returns `any`, which turns off the type system. Use @griffins/json instead.'
     }],
     'import/no-extraneous-dependencies': 'error',
+    'import/no-unused-modules': ['error', { unusedExports: true }],
   },
 };

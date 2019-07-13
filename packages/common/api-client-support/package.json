@@ -1,0 +1,19 @@
+{
+  "name": "@griffins/api-client-support",
+  "private": true,
+  "version": "1.0.0",
+  "main": "build/src/index.js",
+  "scripts": {
+    "build": "npx tsc && echo 'Build complete'"
+  },
+  "dependencies": {
+    "@griffins/json": "*",
+    "io-ts": "^1.10.3",
+    "io-ts-types": "^0.4.7",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "@types/morgan": "^1.7.35",
+    "typescript": "^3.5.2"
+  }
+}

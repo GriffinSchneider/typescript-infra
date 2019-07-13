@@ -1,0 +1,28 @@
+/* eslint-disable @typescript-eslint/array-type, @typescript-eslint/no-use-before-define */
+
+import * as t from 'io-ts';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { DateFromISOString } from 'io-ts-types/lib/Date/DateFromISOString';
+import { Service } from '@griffins/rest-server';
+import { {{{apiClassName}}}Context } from '../context';
+
+{{#each objectModels}}
+{{> modelTemplate}}
+{{/each}}
+{{> routeInfoTemplate}}
+
+export function registerRoute<
+  RouteName extends keyof typeof routeInfo,
+  InputType extends t.TypeOf<typeof routeInfo[RouteName]['inputCodec']>,
+  ResponseType extends t.TypeOf<typeof routeInfo[RouteName]['responseCodec']>
+> (
+  routeName: RouteName,
+  handler: (args: InputType, ctx: {{{apiClassName}}}Context) => Promise<ResponseType>
+): (service: Service<{{{apiClassName}}}Context>) => void {
+  return (service) => {
+    const { method, path, inputLocations, inputCodec, responseCodec } = routeInfo[routeName];
+    // This doesn't typecheck without the 'as any' due to some confusing generics stuff that I don't understand.
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    service.registerRoute(method, path, inputLocations, inputCodec as any, responseCodec as any, handler);
+  }
+}

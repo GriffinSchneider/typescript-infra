@@ -6,16 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node build/src/index.js --inspect",
-    "build": "npm run --silent barrels && npm run --silent generate-spec && tsc && echo 'Build complete'",
-    "barrels": "barrelsby --directory 'src/controllers' --location top --name barrel --delete",
-    "generate-spec": "swaggerGen -c ./swaggerConfig.json"
+    "build": "openapi-codegen items-api && npm run  --silent openapi-codegen && generate-route-barrels && tsc && echo 'Build complete'",
+    "openapi-codegen": "openapi-codegen items-api"
   },
   "dependencies": {
-    "@griffins/backend": "*"
+    "@griffins/rest-server": "*",
+    "io-ts": "^1.10.2",
+    "io-ts-types": "^0.4.7"
   },
   "devDependencies": {
-    "barrelsby": "^2.1.1",
-    "typescript": "^3.5.2",
-    "typescript-rest-swagger": "^0.1.0"
+    "@griffins/scripts": "*",
+    "typescript": "^3.5.2"
   }
 }

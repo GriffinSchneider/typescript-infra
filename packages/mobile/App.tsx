@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { get } from 'ts-get';
-import ItemsAPI, {Items} from '@griffins/items-api-client';
+import { ApiClient, Items} from '@griffins/items-api-client';
 // @ts-ignore
 import { ReactNativeEventSource } from 'rest-api-support';
 
@@ -14,17 +14,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const api = new ItemsAPI({
-  fetch: fetch,
-  EventSource: ReactNativeEventSource,
-  baseUrl: "http://localhost:3000",
+const client = new ApiClient({
+  fetch,
+  baseUrl: 'http://localhost:3000',
 });
 
 async function getItems() {
-  const res = await api.itemsAccountIdGet({ accountId: 'griffin' });
-  if (res.type === 'error') {
-    return undefined;
-  }
+  const res = await client.req('GET /items/{accountId}', { accountId: 'griffin'});
   console.log(`Got Items: ${JSON.stringify(get(res, it => it.body), null, 2)}`);
   return res.body;
 }

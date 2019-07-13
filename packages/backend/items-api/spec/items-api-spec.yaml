@@ -1,0 +1,80 @@
+basePath: null
+definitions:
+    Item:
+        description: ""
+        properties:
+            name:
+                type: string
+                description: ""
+            otherName:
+                type: string
+                description: ""
+            thirdName:
+                type: string
+                description: ""
+            optionalName:
+                type: string
+                description: "it's optional."
+        type: object
+        required:
+            - name
+            - otherName
+            - thirdName
+    Items:
+        description: ""
+        properties:
+            items:
+                type: array
+                items:
+                    $ref: '#/definitions/Item'
+                description: ""
+            page:
+                type: number
+                format: double
+                description: ""
+        type: object
+        required:
+            - items
+            - page
+info:
+    title: '@griffins/items-api'
+    version: 1.0.0
+paths:
+    '/items/{accountId}':
+        get:
+            operationId: ItemsGetItems
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/Items'
+            description: ""
+            parameters:
+                -
+                    description: ""
+                    in: path
+                    name: accountId
+                    required: true
+                    type: string
+    '/transactions/{accountId}':
+        get:
+            operationId: TransactionsGetTransactions
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/Items'
+            description: ""
+            parameters:
+                -
+                    description: ""
+                    in: path
+                    name: accountId
+                    required: true
+                    type: string
+swagger: '2.0'
+securityDefinitions: {}

@@ -1,0 +1,26 @@
+/* eslint-disable @typescript-eslint/array-type, @typescript-eslint/no-use-before-define */
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { ApiClient as BaseApiClient, ApiResponse, DateFromISOString } from '@griffins/api-client-support';
+import * as t from 'io-ts';
+
+{{#each objectModels}}
+{{> modelTemplate}}
+{{/each}}
+{{> routeInfoTemplate}}
+
+export class ApiClient extends BaseApiClient {
+  public async req<
+    RouteName extends keyof typeof routeInfo,
+    InputType extends t.TypeOf<typeof routeInfo[RouteName]['inputCodec']>,
+    ResponseType extends t.TypeOf<typeof routeInfo[RouteName]['responseCodec']>
+  > (
+    routeName: RouteName,
+    input: InputType,
+  ): Promise<ApiResponse<ResponseType>> {
+    const { method, path, inputLocations, inputCodec, responseCodec } = routeInfo[routeName];
+    // This doesn't typecheck without the 'as any' due to some confusing generics stuff that I don't understand.
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return super.baseReq(method, path, inputLocations, inputCodec as any, responseCodec as any, input);
+  }
+}

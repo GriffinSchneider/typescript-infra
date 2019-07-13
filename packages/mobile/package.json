@@ -1,5 +1,5 @@
 {
-  "name": "mobile",
+  "name": "@griffins/mobile",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
@@ -10,7 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@griffins/items-api-client": "../common/build/api-clients/items-api",
+    "@griffins/items-api-client": "*",
     "expo": "^33.0.0",
     "lodash": "^4.17.11",
     "react": "16.8.3",

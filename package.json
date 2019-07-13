@@ -5,16 +5,18 @@
     "packages": [
       "packages/scripts",
       "packages/backend/*",
+      "packages/mobile/",
       "packages/common/*",
-      "packages/common/build/api-clients/*"
+      "packages/common/generated/*"
     ]
   },
   "scripts": {
     "preinstall": "node packages/scripts/preinstall.js",
     "postinstall": "node packages/scripts/postinstall.js",
-    "generate-api-clients": "npx ts-node packages/scripts/generate-api-clients",
-    "watch": "npx ts-node packages/scripts/watch.ts",
-    "lint": "eslint --ext=js,jsx,ts,tsx ."
+    "build": "npx lerna run build",
+    "watch": "node packages/scripts/build/watch.js",
+    "lint": "eslint --ext=js,jsx,ts,tsx .",
+    "inject-mobile-node-modules": "node packages/scripts/build/mobile-node-modules"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.134",
@@ -25,8 +27,10 @@
     "eslint-plugin-import": "^2.17.3",
     "lerna": "^3.15.0",
     "nodemon": "^1.19.1",
-    "small-swagger-codegen": "^1.15.2",
     "ts-node": "^8.2.0",
     "typescript": "^3.5.2"
+  },
+  "engines": {
+    "node": ">=11.0.0"
   }
 }

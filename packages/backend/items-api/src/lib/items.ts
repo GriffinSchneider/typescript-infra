@@ -1,13 +1,4 @@
-export interface Item {
-  name: string;
-  otherName: string;
-  thirdName: string;
-}
-
-export interface Items {
-  items: Item[];
-  page: number;
-}
+import { Items } from "../generated/server";
 
 export async function fetchItems(accountId: string): Promise<Items> {
   return {

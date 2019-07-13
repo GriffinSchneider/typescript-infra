@@ -1,5 +1,7 @@
-import { startup } from '@griffins/backend';
+import { Service } from '@griffins/rest-server';
+import { routes } from './generated/routes';
+import { Context} from "./context";
 
-// Import all controllers so their decorators get processed by typescript-rest.
-import './controllers/barrel';
-startup({ apiName: 'items-api' });
+const service = new Service(new Context());
+routes.forEach(r => r(service));
+service.startup();

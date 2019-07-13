@@ -1,0 +1,32 @@
+{{~#maybeComment description}}
+{{{description}}}
+{{/maybeComment}}
+export interface {{{jsIdentifier name}}} {
+{{#each properties}}
+  {{#maybeComment description}}
+  {{{description}}}
+  {{/maybeComment}}
+  {{{name}}}{{#unless isRequired}}?{{/unless}}: {{{jsIdentifier type}}};
+{{/each}}
+}
+export const {{{tsCodecName name}}}: t.Type<{{{jsIdentifier name}}}> = t.recursion('{{{tsCodecName name}}}', (): t.Type<{{{jsIdentifier name}}}> =>
+  t.intersection([
+    t.type({
+      {{#eachRequiredProp properties}}
+      {{{name}}}: {{{tsCodecName type}}},
+      {{/eachRequiredProp}}
+    }),
+    t.partial({
+      {{#eachOptionalProp properties}}
+      {{{name}}}: {{{tsCodecName type}}},
+      {{/eachOptionalProp}}
+    }),
+  ])
+);
+
+{{#if nestedModels.length}}
+{{#each nestedModels}}
+{{> modelTemplate name=(concat "_" ../name name)}}
+
+{{/each}}
+{{/if}}

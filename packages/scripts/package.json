@@ -3,14 +3,31 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "npx tsc && echo 'Build complete'"
+    "build": "npx tsc && cp src/openapi-codegen/*.handlebars build/openapi-codegen/ && echo 'Build complete'"
+  },
+  "bin": {
+    "generate-route-barrels": "./build/generate-route-barrels/index.js",
+    "openapi-codegen": "./build/openapi-codegen/index.js"
   },
   "dependencies": {
     "@griffins/json": "*",
     "concurrently": "^4.1.0",
+    "glob": "^7.1.4",
+    "js-yaml": "^3.13.1",
+    "lodash": "^4.17.11",
+    "minimist": "^1.2.0",
+    "mkdirp": "^0.5.1",
+    "openapi3-ts": "^1.3.0",
+    "rsync": "^0.6.1",
+    "small-swagger-codegen": "ssh:git@github.com:GriffinSchneider/small-swagger-codegen.git#f8dcffd116772e00867f5100e8e1979400d64148",
     "ts-get": "^1.0.5"
   },
   "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/js-yaml": "^3.12.1",
+    "@types/minimist": "^1.2.0",
+    "@types/mkdirp": "^0.5.2",
+    "@types/rsync": "^0.4.30",
     "typescript": "^3.5.2"
   }
 }

@@ -3,8 +3,9 @@
   "packages": [
     "packages/scripts",
     "packages/backend/*",
+    "packages/mobile",
     "packages/common/*",
-    "packages/common/build/api-clients/*"
+    "packages/common/generated/*"
   ],
   "npmClient": "yarn"
 }

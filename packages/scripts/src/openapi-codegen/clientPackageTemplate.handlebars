@@ -1,0 +1,18 @@
+{
+  "name": "{{{options.packageName}}}",
+  "private": true,
+  "version": "{{#if apiVersion}}{{{apiVersion}}}{{else}}1.0.0{{/if}}",
+  "description": "Swagger client for {{{apiName}}}",
+  "license": "UNLICENSED",
+  "main": "./build/index.js",
+  "scripts" : {
+    "build": "npx tsc && echo 'Build complete'"
+  },
+  "dependencies": {
+    "@griffins/api-client-support": "*",
+    "io-ts": "^1.10.3"
+  },
+  "devDependencies": {
+    "typescript": "^3.5.2"
+  }
+}

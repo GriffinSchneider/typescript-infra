@@ -1,0 +1,23 @@
+const routeInfo = {
+{{#each methods}}
+  {{~#maybeComment description}}
+  {{{description}}}
+  {{/maybeComment}}
+  '{{{capMethod}}} {{{path}}}': {
+    method: '{{{method}}}',
+    path: '{{{path}}}',
+    inputLocations: {
+      {{#each params}}{{{name}}}: '{{{in}}}'{{#unless @last}}, {{/unless}}{{/each}}
+    },
+    inputCodec: t.type({
+      {{#each params}}
+      {{~#maybeComment description}}
+      {{{description}}}
+      {{/maybeComment}}
+      {{{name}}}: {{#unless isRequired}}t.union([{{/unless}}{{{tsCodecName type}}}{{~#unless isRequired}}, t.undefined]){{/unless}},
+      {{/each}}
+    }),
+    responseCodec: {{{tsCodecName response.type}}}
+  },
+{{/each}}
+} as const;

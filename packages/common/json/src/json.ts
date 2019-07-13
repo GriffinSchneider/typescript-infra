@@ -1,7 +1,6 @@
 export type JsonPrimitive = boolean | number | string | null;
 export interface JsonObject { [key: string]: AnyJson }
 export type AnyJson = JsonPrimitive | JsonArray | JsonObject;
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface JsonArray extends Array<AnyJson> {}
 
 export class Json {
