@@ -6,7 +6,7 @@
     "build": "npx tsc && cp src/openapi-codegen/*.handlebars build/openapi-codegen/ && echo 'Build complete'"
   },
   "bin": {
-    "generate-route-barrels": "./build/generate-route-barrels/index.js",
+    "generate-route-barrels": "./build/generate-route-barrels.js",
     "openapi-codegen": "./build/openapi-codegen/index.js"
   },
   "dependencies": {

@@ -1,5 +1,5 @@
 {
-  "name": "@griffins/rest-server",
+  "name": "@griffins/api-server-support",
   "private": true,
   "version": "1.0.0",
   "main": "build/src/index.js",

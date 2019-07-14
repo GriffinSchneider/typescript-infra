@@ -11,8 +11,8 @@ const r = new Rsync()
   .set('copy-links')
   .delete()
   .exclude('@griffins/mobile')
-  .source(path.join(__dirname, '../../../../node_modules'))
-  .destination(path.join(__dirname, '../../../mobile'));
+  .source(path.join(__dirname, '../../../node_modules'))
+  .destination(path.join(__dirname, '../../mobile'));
 
 console.log('Injecting mobile node_modules...');
 r.execute(err => {

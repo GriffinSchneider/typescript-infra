@@ -3,11 +3,8 @@
   "private": true,
   "workspaces": {
     "packages": [
-      "packages/scripts",
-      "packages/backend/*",
-      "packages/mobile/",
-      "packages/common/*",
-      "packages/common/generated/*"
+      "packages/*",
+      "packages/generated/*"
     ]
   },
   "scripts": {

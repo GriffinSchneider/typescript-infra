@@ -101,7 +101,7 @@ function configureHandlebars(handlebars: any): void {
 
 function generate(apiName: string, templates: any, options: any, output: string) {
   const typescriptServerLanguageSpec = { templates, typeMap, configureHandlebars };
-  const specPath = path.resolve(__dirname, `../../../backend/${apiName}/spec/${apiName}-spec.yaml`);
+  const specPath = path.resolve(__dirname, `../../../${apiName}/spec/${apiName}-spec.yaml`);
   const specData = fs.readFileSync(specPath, 'utf8');
   const spec = yaml.safeLoad(specData);
   const apis = { [apiName]: { basePath: '', spec } };
@@ -110,12 +110,12 @@ function generate(apiName: string, templates: any, options: any, output: string)
 }
 
 function generateRoutes(apiName: string) {
-  const output = path.resolve(__dirname, `../../../backend/${apiName}/src/generated`);
+  const output = path.resolve(__dirname, `../../../${apiName}/src/generated`);
   generate(apiName, routeTemplates, {}, output);
 }
 
 function generateClient(apiName: string) {
-  const output = path.resolve(__dirname, `../../../common/generated/${apiName}-client`);
+  const output = path.resolve(__dirname, `../../../generated/${apiName}-client`);
   generate(apiName, clientTemplates, { packageName: `@griffins/${apiName}-client` }, output);
 }
 

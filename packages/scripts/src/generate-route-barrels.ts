@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import glob from 'glob';
 import mkdirp from 'mkdirp';
-import { getProjectApiPackages, LernaPackage } from '../lib';
+import { getProjectApiPackages, LernaPackage } from './lib';
 
 function outputFolder(pack: LernaPackage) {
   return path.join(pack.location, 'src', 'generated');

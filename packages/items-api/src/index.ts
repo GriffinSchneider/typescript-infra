@@ -1,4 +1,4 @@
-import { Service } from '@griffins/rest-server';
+import { Service } from '@griffins/api-server-support';
 import { routers } from './generated/routes';
 import { Context } from './context';
 

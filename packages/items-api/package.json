@@ -10,7 +10,7 @@
     "openapi-codegen": "openapi-codegen items-api"
   },
   "dependencies": {
-    "@griffins/rest-server": "*",
+    "@griffins/api-server-support": "*",
     "io-ts": "^1.10.2",
     "io-ts-types": "^0.4.7"
   },
