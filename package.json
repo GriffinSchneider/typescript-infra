@@ -11,7 +11,7 @@
     "preinstall": "node packages/scripts/preinstall.js",
     "postinstall": "node packages/scripts/postinstall.js",
     "build": "npx lerna run build",
-    "watch": "node packages/scripts/build/watch.js",
+    "watch": "npx ts-node packages/scripts/src/watch.ts",
     "lint": "eslint --ext=js,jsx,ts,tsx .",
     "inject-mobile-node-modules": "node packages/scripts/build/mobile-node-modules"
   },
