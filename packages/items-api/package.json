@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@griffins/api-server-support": "*",
-    "io-ts": "^1.10.2",
+    "io-ts": "^1.10.3",
     "io-ts-types": "^0.4.7"
   },
   "devDependencies": {

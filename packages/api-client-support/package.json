@@ -9,11 +9,9 @@
   "dependencies": {
     "@griffins/json": "*",
     "io-ts": "^1.10.3",
-    "io-ts-types": "^0.4.7",
-    "morgan": "^1.9.1"
+    "io-ts-types": "^0.4.7"
   },
   "devDependencies": {
-    "@types/morgan": "^1.7.35",
     "typescript": "^3.5.2"
   }
 }
