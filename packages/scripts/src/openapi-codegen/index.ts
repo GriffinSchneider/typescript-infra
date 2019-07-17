@@ -115,7 +115,7 @@ function generateRoutes(apiName: string) {
 }
 
 function generateClient(apiName: string) {
-  const output = path.resolve(__dirname, `../../../generated/${apiName}-client`);
+  const output = path.resolve(__dirname, `../../../${apiName}-client`);
   generate(apiName, clientTemplates, { packageName: `@griffins/${apiName}-client` }, output);
 }
 

@@ -21,4 +21,4 @@ function generatePlaceholder(name, dir) {
 }
 
 // TODO: Don't hardcode client names
-generatePlaceholder('@griffins/items-api-client', 'packages/generated/items-api-client');
+generatePlaceholder('@griffins/items-api-client', 'packages/items-api-client');
